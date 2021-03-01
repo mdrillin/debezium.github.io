@@ -82,10 +82,14 @@ As with everything in Debezium, the UI is fully open source (Apache License Vers
 The debezium-ui https://hub.docker.com/r/debezium/debezium-ui[docker image] is available for running the UI.  To start the UI and connect to an existing Kafka Connect instance:
 
 ----
-$ docker run -it --rm --name debezium-ui -p 8080:8080 -e KAFKA_CONNECT_URI=http://connect:8083 -e PROXY=true --link connect:connect debezium/debezium-ui:1.5
+$ docker run -it --rm --name debezium-ui -p 8080:8080 -e KAFKA_CONNECT_URI=http://connect:8083 debezium/debezium-ui:1.5
 ----
 
-( where KAFKA_CONNECT_URI supplies the available URI(s) )
+( where KAFKA_CONNECT_URI supplies a comma-separated list of the available URI(s) )
+[NOTE]
+====
+The UI requires a network connection to a Kafka Connect instance, (i.e. running on the same docker network).
+====
 
 ==== Self-contained example
 
